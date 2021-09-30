@@ -7,7 +7,7 @@ if [[ "${infile}" == '' ]]; then
 fi
 
 countries="$(awk '{ ORS=","; print $1 }' "${infile}" | sed 's/,$//')"
-outfile="$(dirname "${infile}")/${infile%%.*}-rcline.${infile##*.}"
+outfile="$(dirname "${infile}")/$(basename "${infile%%.*}-rcline.${infile##*.}")"
 
 echo -en "# exclude known surveillance countries that we may not trust" \
          "\nStrictNodes   1" \
